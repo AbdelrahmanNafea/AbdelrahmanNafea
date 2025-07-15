@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- ====== YOUR NAME HERE ====== -->
+    <title>Abdelrahman Nafea | Modern Portfolio</title>
+    
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Devicon for Tech Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+
+    <script>
+        // Set theme on page load
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark')
+        } else {
+          document.documentElement.classList.remove('dark')
+        }
+    </script>
+    
+    <style>
+        /* Custom styles to integrate Inter font */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Style for the future project card */
+        .future-project-card-light {
+            background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='12' ry='12' stroke='%2394A3B8' stroke-width='2' stroke-dasharray='8%2c 8' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+        }
+        .future-project-card-dark {
+            background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='12' ry='12' stroke='%23334155' stroke-width='2' stroke-dasharray='8%2c 8' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+        }
+
+        /* --- Animation Styles --- */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Initial state for scroll animations */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.6s ease-out, transform 0.8s ease-out;
+            will-change: opacity, transform;
+        }
+
+        /* State when element is visible */
+        .scroll-animate.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Staggered animation delays */
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+        .delay-4 { transition-delay: 0.4s; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-300">
+
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-50 bg-slate-50/80 dark:bg-slate-900/80 backdrop-blur-lg border-b border-slate-200 dark:border-slate-800">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-xl font-bold text-slate-900 dark:text-slate-100">Abdelrahman Nafea</a>
+            <div class="flex items-center space-x-8">
+                <ul class="hidden md:flex space-x-8">
+                    <li><a href="#about" class="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-500 transition-colors">About</a></li>
+                    <li><a href="#projects" class="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-500 transition-colors">Projects</a></li>
+                    <li><a href="#contact" class="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-500 transition-colors">Contact</a></li>
+                </ul>
+                <button id="theme-toggle" class="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-500">
+                    <i class="w-6 h-6" data-lucide="sun"></i>
+                    <i class="w-6 h-6 hidden" data-lucide="moon"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6 overflow-x-hidden">
+
+        <!-- Hero Section -->
+        <section id="hero" class="py-20 lg:py-32">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="text-center lg:text-left">
+                    <p class="text-blue-600 dark:text-blue-500 font-semibold" style="animation: fadeInUp 0.8s ease-out;">Hello, I'm</p>
+                    <h1 class="text-4xl md:text-6xl font-bold text-slate-900 dark:text-slate-100 mt-2 mb-4" style="animation: fadeInUp 0.8s ease-out 0.2s; animation-fill-mode: backwards;">Abdelrahman Nafea</h1>
+                    <p class="text-lg text-slate-600 dark:text-slate-400 max-w-lg mx-auto lg:mx-0" style="animation: fadeInUp 0.8s ease-out 0.4s; animation-fill-mode: backwards;">A creative Front-End Developer building beautiful and user-friendly websites. I turn ideas into reality with code.</p>
+                    <div class="mt-8 flex justify-center lg:justify-start gap-4" style="animation: fadeInUp 0.8s ease-out 0.6s; animation-fill-mode: backwards;">
+                        <a href="#projects" class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-transform hover:scale-105 shadow-lg">View My Portfolio</a>
+                        <a href="#contact" class="px-6 py-3 bg-slate-200 text-slate-800 dark:bg-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-600 transition-transform hover:scale-105">Get in Touch</a>
+                    </div>
+                </div>
+                <div class="hidden lg:block" style="animation: fadeInUp 0.8s ease-out 0.8s; animation-fill-mode: backwards;">
+                    <img src="https://placehold.co/500x500/e2e8f0/475569?text=Your+Photo" alt="Portrait of Abdelrahman Nafea" class="rounded-full shadow-2xl mx-auto">
+                </div>
+            </div>
+        </section>
+
+        <!-- About Me Section -->
+        <section id="about" class="py-20">
+            <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm p-8 md:p-12 scroll-animate">
+                <div class="text-center">
+                    <h2 class="text-3xl font-bold text-slate-900 dark:text-slate-100">A Little Bit About Me</h2>
+                    <p class="mt-4 max-w-3xl mx-auto text-slate-600 dark:text-slate-400">
+                        I've always been fascinated by how things work on the web, which led me to dive deep into front-end development. I love the challenge of creating a seamless user experience and enjoy bringing designs to life with clean, efficient code. My goal is to build products that are not only functional but also delightful to use.
+                    </p>
+                    <div class="mt-12">
+                        <h3 class="text-xl font-semibold text-slate-800 dark:text-slate-200 mb-8">Core Technologies</h3>
+                        
+                        <!-- Cloud & DevOps -->
+                        <div class="mb-8">
+                            <h4 class="text-lg font-semibold text-slate-700 dark:text-slate-300 mb-4">Cloud & DevOps</h4>
+                            <div class="flex justify-center gap-x-6 gap-y-8 flex-wrap">
+                                <div class="text-center text-slate-600 dark:text-slate-400 w-24">
+                                    <i class="devicon-amazonwebservices-original colored text-5xl"></i>
+                                    <p class="mt-2 text-sm">AWS</p>
+                                </div>
+                                <div class="text-center text-slate-600 dark:text-slate-400 w-24">
+                                    <i class="devicon-docker-plain colored text-5xl"></i>
+                                    <p class="mt-2 text-sm">Docker</p>
+                                </div>
+                                <div class="text-center text-slate-600 dark:text-slate-400 w-24">
+                                    <i class="devicon-apachekafka-original colored text-5xl"></i>
+                                    <p class="mt-2 text-sm">Kafka</p>
+                                </div>
+                                <div class="text-center text-slate-600 dark:text-slate-400 w-24">
+                                    <i class="devicon-kubernetes-plain colored text-5xl"></i>
+                                    <p class="mt-2 text-sm">Kubernetes</p>
+                                </div>
+                                <div class="text-center text-slate-600 dark:text-slate-400 w-24">
+                                    <i class="devicon-newrelic-original colored text-5xl"></i>
+                                    <p class="mt-2 text-sm">New Relic</p>
+                                </div>
+                                <div class="text-center text-slate-600 dark:text-slate-400 w-24">
+                                    <i class="devicon-grafana-original colored text-5xl"></i>
+                                    <p class="mt-2 text-sm">Grafana</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Languages -->
+                        <div class="mb-8">
+                            <h4 class="text-lg font-semibold text-slate-700 dark:text-slate-300 mb-4">Programming Languages</h4>
+                            <div class="flex justify-center gap-x-6 gap-y-8 flex-wrap">
+                                <div class="text-center text-slate-600 dark:text-slate-400 w-24">
+                                    <i class="devicon-csharp-plain colored text-5xl"></i>
+                                    <p class="mt-2 text-sm">C#</p>
+                                </div>
+                                <div class="text-center text-slate-600 dark:text-slate-400 w-24">
+                                    <i class="devicon-go-original-wordmark colored text-5xl"></i>
+                                    <p class="mt-2 text-sm">Go</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Databases -->
+                        <div>
+                            <h4 class="text-lg font-semibold text-slate-700 dark:text-slate-300 mb-4">Databases</h4>
+                             <div class="flex justify-center gap-x-6 gap-y-8 flex-wrap">
+                                <div class="text-center text-slate-600 dark:text-slate-400 w-24">
+                                    <i class="devicon-microsoftsqlserver-plain colored text-5xl"></i>
+                                    <p class="mt-2 text-sm">SQL Server</p>
+                                </div>
+                                <div class="text-center text-slate-600 dark:text-slate-400 w-24">
+                                    <i class="devicon-postgresql-plain colored text-5xl"></i>
+                                    <p class="mt-2 text-sm">PostgreSQL</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-20">
+            <div class="text-center mb-12 scroll-animate">
+                <h2 class="text-3xl font-bold text-slate-900 dark:text-slate-100">Things I've Built</h2>
+                <p class="mt-2 text-slate-600 dark:text-slate-400">A selection of my favorite projects.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <!-- PROJECT 1 -->
+                <div class="bg-white dark:bg-slate-800 rounded-xl shadow-md dark:border dark:border-slate-700 overflow-hidden transform hover:-translate-y-2 hover:shadow-xl transition-all duration-300 scroll-animate delay-1">
+                    <img class="h-56 w-full object-cover" src="https://placehold.co/600x400/3b82f6/ffffff?text=Project+One" alt="Project 1 Screenshot">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-slate-900 dark:text-slate-100 mb-2">E-commerce Platform</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm mb-4">A full-featured online store built with React, featuring product search, cart functionality, and a mock checkout process.</p>
+                        <div class="flex gap-4">
+                            <a href="#" target="_blank" class="flex items-center text-blue-600 dark:text-blue-500 hover:underline"><i data-lucide="external-link" class="inline-block w-4 h-4 mr-1"></i> Live Demo</a>
+                            <a href="#" target="_blank" class="flex items-center text-slate-600 dark:text-slate-400 hover:underline"><i data-lucide="github" class="inline-block w-4 h-4 mr-1"></i> Source Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PROJECT 2 -->
+                <div class="bg-white dark:bg-slate-800 rounded-xl shadow-md dark:border dark:border-slate-700 overflow-hidden transform hover:-translate-y-2 hover:shadow-xl transition-all duration-300 scroll-animate delay-2">
+                    <img class="h-56 w-full object-cover" src="https://placehold.co/600x400/10b981/ffffff?text=Project+Two" alt="Project 2 Screenshot">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-slate-900 dark:text-slate-100 mb-2">Task Management App</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm mb-4">A responsive task manager app with drag-and-drop functionality to organize tasks into different status columns.</p>
+                         <div class="flex gap-4">
+                            <a href="#" target="_blank" class="flex items-center text-blue-600 dark:text-blue-500 hover:underline"><i data-lucide="external-link" class="inline-block w-4 h-4 mr-1"></i> Live Demo</a>
+                            <a href="#" target="_blank" class="flex items-center text-slate-600 dark:text-slate-400 hover:underline"><i data-lucide="github" class="inline-block w-4 h-4 mr-1"></i> Source Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- YOUR FUTURE PROJECT HERE -->
+                <div class="future-project-card-light dark:future-project-card-dark rounded-xl p-6 flex flex-col items-center justify-center text-center min-h-[420px] scroll-animate delay-3">
+                    <div class="w-16 h-16 bg-slate-200 dark:bg-slate-700 rounded-full flex items-center justify-center mb-4">
+                        <i data-lucide="rocket" class="w-8 h-8 text-slate-500 dark:text-slate-400"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-slate-700 dark:text-slate-300 mb-2">Something New is Coming!</h3>
+                    <p class="text-slate-500 dark:text-slate-400">I'm currently working on an exciting new project. Stay tuned for updates on its launch!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20">
+            <div class="text-center scroll-animate">
+                <p class="text-blue-600 dark:text-blue-500 font-semibold">What's Next?</p>
+                <h2 class="text-3xl font-bold text-slate-900 dark:text-slate-100 mt-2">Let's Work Together</h2>
+                <p class="mt-4 max-w-xl mx-auto text-slate-600 dark:text-slate-400">I'm always open to discussing new projects and opportunities. If you have something in mind, I'd love to hear from you!</p>
+                <div class="mt-8">
+                    <a href="mailto:ar.nafea@gmai.com" class="inline-block px-8 py-4 bg-blue-600 text-white text-lg font-semibold rounded-lg hover:bg-blue-700 transition-transform hover:scale-105 shadow-lg">
+                        Say Hello
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-200 dark:border-slate-800">
+        <div class="container mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+            <p class="text-slate-500 dark:text-slate-400">&copy; 2025 Abdelrahman Nafea. All Rights Reserved.</p>
+            <div class="flex space-x-6 mt-4 md:mt-0">
+                <a href="https://github.com/AbdelrahmanNafea" target="_blank" class="text-slate-500 hover:text-blue-600 dark:hover:text-blue-500"><i data-lucide="github" class="w-5 h-5"></i></a>
+                <a href="https://www.linkedin.com/in/abdelrahman-nafea-48b95240" target="_blank" class="text-slate-500 hover:text-blue-600 dark:hover:text-blue-500"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+                <a href="#" target="_blank" class="text-slate-500 hover:text-blue-600 dark:hover:text-blue-500"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lucide Icons Script -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Scripts for Animations & Theme Toggle -->
+    <script>
+        // Lucide Icons
+        lucide.createIcons();
+
+        // Theme Toggle
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const sunIcon = themeToggleBtn.querySelector('[data-lucide="sun"]');
+        const moonIcon = themeToggleBtn.querySelector('[data-lucide="moon"]');
+
+        const updateIcons = () => {
+            if (document.documentElement.classList.contains('dark')) {
+                sunIcon.classList.add('hidden');
+                moonIcon.classList.remove('hidden');
+            } else {
+                sunIcon.classList.remove('hidden');
+                moonIcon.classList.add('hidden');
+            }
+        };
+        
+        themeToggleBtn.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+            localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+            updateIcons();
+        });
+
+        // Update icons on initial load
+        updateIcons();
+
+        // Scroll Animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            const elementsToAnimate = document.querySelectorAll('.scroll-animate');
+            elementsToAnimate.forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
